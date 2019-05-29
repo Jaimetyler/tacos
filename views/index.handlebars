@@ -1,7 +1,28 @@
 <div class="container">
     <div class="row">
-        <div class="col-12-xs">
-            <img src="../public/images/5a309403597a94.8410470115131330593665.png">
+        <div class="col-12-xs" id = "header">
+            <h1>Eat Some Tacos!</h1>
+            <img id = "main-img" src="../public/images/5a309403597a94.8410470115131330593665.png">
+        </div>
+        <div class = "col-6-xs" id = "burger-menu">
+            <div class = "row">
+                {{#each taco_data}}
+                {{#unless this.devoured}}
+                <div class = "col-9-xs">
+                    <pre>{{this.id}}. {{this.taco_name}}</pre>
+                </div>
+                <div class = "col-sx-3 text-center">
+                    {{!-- <form method = "POST" action = "/tacos/update?_method = PUT" class = "button-size"> --}}
+                        <input type = "hidden" name = "taco_id" type = "text" value = {{this.id}}>
+                        <br>
+                        <button type = "submit" class = "btn btn-primary">
+                                EAT DAT!
+                        </button>
+                    {{!-- </form> --}}
+                </div>
+                {{/unless}}
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
