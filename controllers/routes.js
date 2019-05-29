@@ -19,7 +19,7 @@ router.put("/tacos/update/:id", function(req, res){
     });
   }); 
 
-  router.post("/taco/create", function(req,res) {
+  router.post("/tacos/create", function(req,res) {
     console.log(req.body)
    taco.insertOne(req.body.taco_name, function(results){
      res.redirect("/");
