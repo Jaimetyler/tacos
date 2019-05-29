@@ -1,8 +1,10 @@
-var express = require ("express");
-var app = express();
+const express = require ("express");
+const app = express();
 
-var exphbs = require("express-handlebars");
-app.use(express.static(__dirname + "/public"));
+
+
+const exphbs = require("express-handlebars");
+
 
 
 var PORT = process.env.PORT || 9000;
@@ -16,9 +18,9 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/routes.js");
+const routes = require("./controllers/routes.js");
 
-app.use(routes);
+app.use('/', routes);
 
 app.listen(PORT, function() {
     // Log (server-side) when our server has started
