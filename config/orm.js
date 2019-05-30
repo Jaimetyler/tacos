@@ -9,6 +9,16 @@ var orm = {
         })
     },
     insertOne: (table, cols, vals, cb) => {
+
+        function printQuestionMarks(num) {
+            var arr = [];
+
+            for (var i = 0; i < num; i++) {
+                arr.push("?");
+            }
+
+            return arr.toString();
+        }
         var queryString = "INSERT INTO " + table;
 
         console.log("query string = ", queryString);
@@ -38,7 +48,20 @@ var orm = {
             if (err) throw err;
             cb(result);
         })
-    }
+    },
+     delete: function(table, condition, cb) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+    
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
+          cb(result);
+        });
+      }
 }
 
 module.exports = orm;
